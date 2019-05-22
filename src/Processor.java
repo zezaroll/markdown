@@ -1,7 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Processor {
+public class Processor implements Parser{
     private static final Pattern HEADER = Pattern.compile("##.*");
     private static final Pattern STRONG = Pattern.compile("\\*\\*[\\w]*\\*\\*");
     private static final Pattern EM = Pattern.compile("\\*[\\w]+\\*[^\\*]");
@@ -22,7 +22,6 @@ public class Processor {
             getProcess = detectRole(i);
 
             while (matcher.find()) {
-                System.out.println(matcher.group());
                 line = getProcess.transformInputLine(line, matcher.group());
             }
         }
@@ -32,7 +31,7 @@ public class Processor {
         return line;
     }
 
-    String transformInputLine(String line, String replace) {
+    public String transformInputLine(String line, String replace) {
         return null;
     }
 
@@ -61,5 +60,4 @@ public class Processor {
         }
         return p;
     }
-
 }
